@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/homeFragment">
+
+    <!-- Home -->
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.mhealthapplication.home.HomeFragment"
+        android:label="Home" />
+
+    <!-- Consum -->
+    <fragment
+        android:id="@+id/consumFragment"
+        android:name="com.example.mhealthapplication.ConsumFragment.ConsumFragment"
+        android:label="Consum" />
+
+    <!-- Settings -->
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.mhealthapplication.settings.SettingsFragment"
+        android:label="Settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_listViewFragment"
+            app:destination="@id/listViewFragment" />
+
+        <action
+            android:id="@+id/action_settingsFragment_to_recyclerViewFragment"
+            app:destination="@id/recyclerViewFragment" />
+    </fragment>
+
+    <!-- ListView -->
+    <fragment
+        android:id="@+id/listViewFragment"
+        android:name="com.example.mhealthapplication.settings.ListView.ListViewFragment"
+        android:label="ListViewFragment" />
+
+    <!-- RecyclerView -->
+    <fragment
+        android:id="@+id/recyclerViewFragment"
+        android:name="com.example.mhealthapplication.settings.recyclerView.RecyclerViewFragment"
+        android:label="RecyclerViewFragment" />
+</navigation>
+
+
+    <!--<navigation xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:id="@+id/nav_graph.xml"-->
+<!--    app:startDestination="@id/settingsFragment">-->
+<!--    <fragment-->
+<!--        android:id="@+id/settingsFragment"-->
+<!--        android:name="com.example.mhealthapplication.settings.SettingsFragment"-->
+<!--        android:label="SettingsFragment">-->
+<!--        <action-->
+<!--            android:id="@+id/action_settingsFragment_to_listViewFragment"-->
+<!--            app:destination="@id/listViewFragment" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_settingsFragment_to_recyclerViewFragment"-->
+<!--            app:destination="@id/recyclerViewFragment" />-->
+<!--    </fragment>-->
+<!--    <fragment-->
+<!--        android:id="@+id/listViewFragment"-->
+<!--        android:name="com.example.mhealthapplication.settings.ListView.ListViewFragment"-->
+<!--        android:label="ListViewFragment" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/recyclerViewFragment"-->
+<!--        android:name="com.example.mhealthapplication.settings.recyclerView.RecyclerViewFragment"-->
+<!--        android:label="RecyclerViewFragment" />-->
+<!--</navigation>-->

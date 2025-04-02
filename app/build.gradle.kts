@@ -37,8 +37,14 @@ android {
 }
 
 dependencies {
+    implementation(libs.tensorflow.lite)
+    implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
+
     implementation("com.google.firebase:firebase-database:21.0.0")
     implementation(platform("com.google.firebase:firebase-bom:33.11.0"))
+
+//    implementation("androidx.camera.camera2:camera-camera2:1.1.0")
+//    implementation("androidx.camera.lifecycle:lifecycle-camera:1.1.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -48,6 +54,8 @@ dependencies {
     implementation(libs.androidx.gridlayout)
     implementation(libs.firebase.database)
     implementation(libs.firebase.auth.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

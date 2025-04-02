@@ -1,4 +1,5 @@
-package com.example.mhealthapplication
+package com.example.mhealthapplication.register
+
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -6,10 +7,10 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.Firebase
+import com.example.mhealthapplication.login.LoginActivity
+import com.example.mhealthapplication.MainActivity
+import com.example.mhealthapplication.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
-
 
 class RegisterActivity : AppCompatActivity() {
     internal lateinit var auth: FirebaseAuth
@@ -40,7 +41,9 @@ class RegisterActivity : AppCompatActivity() {
 
         // Setarea listener-ului pentru butonul de înregistrare
         button.setOnClickListener {
-            buttonWasPressed(emailEditText,password1EditText,password2EditText)
+//            buttonWasPressed(emailEditText,password1EditText,password2EditText)
+            val intent = Intent(this, LoginActivity::class.java);
+            startActivity(intent);
         }
 
 
@@ -85,7 +88,7 @@ class RegisterActivity : AppCompatActivity() {
 //        Toast.makeText(this,"Acesta este mesajul afisat",Toast.LENGTH_SHORT).show()
 //        println("onDestroy")
 //    }
-    private fun buttonWasPressed(emailEditText : TextView,password1EditText : EditText, password2EditText : EditText) {
+    private fun buttonWasPressed(emailEditText : TextView, password1EditText : EditText, password2EditText : EditText) {
         val email = emailEditText.text.toString()
         val password1 = password1EditText.text.toString()
         val password2 = password2EditText.text.toString()
@@ -114,4 +117,3 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 }
-

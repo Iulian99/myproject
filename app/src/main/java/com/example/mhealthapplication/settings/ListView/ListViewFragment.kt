@@ -1,24 +1,25 @@
-package com.example.mhealthapplication
+package com.example.mhealthapplication.settings.ListView
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import android.widget.Toast
+import android.widget.TextView
+import com.example.mhealthapplication.R
 
-class SettingsFragment : Fragment() {
+class ListViewFragment : Fragment() {
+
     private lateinit var listView: ListView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        var view : View = inflater.inflate(R.layout.fragment_settings, container, false)
+        var view : View = inflater.inflate(R.layout.fragment_list_view, container, false)
 
-        listView = view.findViewById(R.id.listView)
+        listView = view.findViewById(R.id.list_view)
 
         val arrayAdapter: ArrayAdapter<String>
         val users = arrayOf(
@@ -29,11 +30,18 @@ class SettingsFragment : Fragment() {
             "Python", "Java", "C++", "PHP", "Kotlin", "GoLang", "SQL", "R Language",
             "Android", "Git", "AWS", "Docker", "Azure", "GCP", "JavaScript", "TypeScript"
         )
-        arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, users)
-
+//        arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, users)
+        arrayAdapter = object : ArrayAdapter<String>(requireContext(), R.layout.item_list, R.id.text_item, users) {
+            override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                val view = super.getView(position, convertView, parent)
+                val textView = view.findViewById<TextView>(R.id.text_item)
+                textView.text = users[position]
+                return view
+            }
+        }
         listView.adapter = arrayAdapter
+
         return view
     }
-
 
 }
