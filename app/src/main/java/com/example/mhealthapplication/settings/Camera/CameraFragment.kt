@@ -12,15 +12,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
-
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.mhealthapplication.R
-import com.google.android.gms.common.wrappers.Wrappers.packageManager
 
 class CameraFragment : Fragment() {
     private lateinit var button : Button
-    private var PERMISSION_REQUEST_CODE = 200;
+    private var PERMISSION_REQUEST_CODE = 200
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +37,7 @@ class CameraFragment : Fragment() {
                 println("checkPermission == false")
 
                 Toast.makeText(requireContext(), "False", Toast.LENGTH_SHORT).show()
-                requestPermission();
+                requestPermission()
             }
         }
         return view
