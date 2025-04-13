@@ -13,7 +13,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         var view : View = inflater.inflate(R.layout.fragment_home, container, false)
-
+//        Empty :)
         return view
     }
 

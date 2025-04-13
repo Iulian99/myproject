@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         enableEdgeToEdge()
 
-
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         frameLayout = findViewById(R.id.frame_layout)
 
@@ -35,7 +34,6 @@ class MainActivity : AppCompatActivity() {
                 .commit()
         }
     }
-
     // Navigare între fragmente pe baza itemului selectat din BottomNavigationView
     private fun navigationBar(it: MenuItem): Boolean {
         var fragment: Fragment? = null
@@ -53,25 +51,4 @@ class MainActivity : AppCompatActivity() {
 
         return true
     }
-//    private fun navigationBar(it: MenuItem) : Boolean{
-//        when (it.itemId) {
-//            R.id.action_home -> {
-//                val fragment = HomeFragment()
-//                supportFragmentManager.beginTransaction().replace(R.id.frame_layout, fragment)
-//                    .commit()
-//            }
-//            R.id.action_consum -> {
-//                val fragment = ConsumFragment()
-//                supportFragmentManager.beginTransaction().replace(R.id.frame_layout, fragment)
-//                    .commit()
-//            }
-//            R.id.action_settings -> {
-//                val fragment = SettingsFragment()
-//                supportFragmentManager.beginTransaction().replace(R.id.frame_layout, fragment)
-//                    .commit()
-//            }
-//        }
-//        return true
-//    }
-
 }

@@ -13,7 +13,7 @@ import com.example.mhealthapplication.R
 import com.google.firebase.auth.FirebaseAuth
 
 class RegisterActivity : AppCompatActivity() {
-    internal lateinit var auth: FirebaseAuth
+    lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +29,6 @@ class RegisterActivity : AppCompatActivity() {
 //        val - variabile finale
         auth = FirebaseAuth.getInstance()
 
-
-
         val title : TextView = findViewById(R.id.title_text_view)
         val emailEditText : EditText = findViewById(R.id.email_edit_text)
         val password1EditText : EditText = findViewById(R.id.password1)
@@ -38,15 +36,12 @@ class RegisterActivity : AppCompatActivity() {
         val button : Button = findViewById(R.id.button_register)
         val loginTextView : TextView = findViewById(R.id.login)
 
-
         // Setarea listener-ului pentru butonul de înregistrare
         button.setOnClickListener {
-//            buttonWasPressed(emailEditText,password1EditText,password2EditText)
+            buttonWasPressed(emailEditText,password1EditText,password2EditText)
             val intent = Intent(this, LoginActivity::class.java);
             startActivity(intent);
         }
-
-
 
         loginTextView.setOnClickListener{
             val intent = Intent(this, LoginActivity::class.java)
@@ -55,6 +50,35 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    private fun buttonWasPressed(emailEditText : TextView, password1EditText : EditText, password2EditText : EditText) {
+        val email = emailEditText.text.toString()
+        val password1 = password1EditText.text.toString()
+        val password2 = password2EditText.text.toString()
+
+        if (password1 == password2) {
+            auth.createUserWithEmailAndPassword(email, password1)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        var intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(
+                            applicationContext,
+                            "Înregistrarea a eșuat: ${task.exception?.localizedMessage}",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Toast.makeText(applicationContext, exception.localizedMessage, Toast.LENGTH_LONG)
+                        .show()
+                }
+        } else {
+            Toast.makeText(this, "Parolele nu sunt identice", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
 //    override fun onStart() {
 //        super.onStart()
 //        Toast.makeText(this,"Acesta este mesajul afisat",Toast.LENGTH_SHORT).show()
@@ -88,32 +112,3 @@ class RegisterActivity : AppCompatActivity() {
 //        Toast.makeText(this,"Acesta este mesajul afisat",Toast.LENGTH_SHORT).show()
 //        println("onDestroy")
 //    }
-    private fun buttonWasPressed(emailEditText : TextView, password1EditText : EditText, password2EditText : EditText) {
-        val email = emailEditText.text.toString()
-        val password1 = password1EditText.text.toString()
-        val password2 = password2EditText.text.toString()
-
-        if (password1 == password2) {
-            auth.createUserWithEmailAndPassword(email, password1)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        var intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                    } else {
-                        Toast.makeText(
-                            applicationContext,
-                            "Înregistrarea a eșuat: ${task.exception?.localizedMessage}",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    Toast.makeText(applicationContext, exception.localizedMessage, Toast.LENGTH_LONG)
-                        .show()
-                }
-        } else {
-            Toast.makeText(this, "Parolele nu sunt identice", Toast.LENGTH_SHORT).show()
-        }
-    }
-}

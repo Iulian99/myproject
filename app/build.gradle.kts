@@ -37,14 +37,19 @@ android {
 }
 
 dependencies {
+//    Tenserflow Lite
     implementation(libs.tensorflow.lite)
     implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
-
+//Firebase
     implementation("com.google.firebase:firebase-database:21.0.0")
     implementation(platform("com.google.firebase:firebase-bom:33.11.0"))
-
+    implementation("com.google.firebase:firebase-firestore-ktx")
+//    Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 //    implementation("androidx.camera.camera2:camera-camera2:1.1.0")
 //    implementation("androidx.camera.lifecycle:lifecycle-camera:1.1.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
